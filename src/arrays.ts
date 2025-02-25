@@ -124,5 +124,23 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    return [];
+    // if (values.length === 0) {
+    //     return [0];
+    // }
+    let index = values.findIndex((value: number): boolean => value < 0);
+    if (index === -1) {
+        index = values.length;
+    }
+    const valuesToSum = values.slice(0, index);
+    let sum: number;
+    if (valuesToSum.length === 0) {
+        sum = 0;
+    } else {
+        sum = valuesToSum.reduce(
+            (total: number, value: number): number => (total += value),
+        );
+    }
+    const result = [...values];
+    result.splice(index + 1, 0, sum);
+    return result;
 }
