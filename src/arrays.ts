@@ -124,9 +124,6 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    // if (values.length === 0) {
-    //     return [0];
-    // }
     let index = values.findIndex((value: number): boolean => value < 0);
     if (index === -1) {
         index = values.length;
